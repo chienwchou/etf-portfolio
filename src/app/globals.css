@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #080c14;
+  --color-bg-secondary: #0d1421;
+  --color-bg-card: #111827;
+  --color-bg-card-hover: #1a2535;
+  --color-bg-sidebar: #0a1020;
+  --color-border-base: #1e2d42;
+  --color-border-light: #243447;
+  --color-text-primary: #f0f6ff;
+  --color-text-secondary: #8899b4;
+  --color-text-muted: #4a6080;
+  --color-accent-blue: #3b82f6;
+  --color-accent-blue-dark: #1d4ed8;
+  --color-accent-green: #10b981;
+  --color-accent-red: #ef4444;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-amber: #f59e0b;
+
+  --animate-fade-in: fadeIn 0.4s ease-out forwards;
+  --animate-slide-in: slideIn 0.3s ease-out forwards;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-count-up: countUp 0.5s ease-out forwards;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.15); }
+  50%       { box-shadow: 0 0 20px 4px rgba(59,130,246,0.15); }
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--color-border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+
+/* ── Nav active bar (::before pseudo) ──────────────────────── */
+.nav-item-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: var(--color-accent-blue);
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Stat card top accent (::after pseudo) ──────────────────── */
+.stat-top-accent::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  border-radius: 16px 16px 0 0;
+}
+.accent-blue::after  { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+.accent-green::after { background: linear-gradient(90deg, #10b981, #34d399); }
+.accent-purple::after{ background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+.accent-amber::after { background: linear-gradient(90deg, #f59e0b, #fcd34d); }
+
+/* ── Search input focus ring ────────────────────────────────── */
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+.search-input::placeholder { color: var(--color-text-muted); }
+
+/* ── Table row hover ────────────────────────────────────────── */
+.holdings-row:hover td { background: rgba(59,130,246,0.03); }
+.holdings-row:last-child td { border-bottom: none; }
